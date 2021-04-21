@@ -4,7 +4,6 @@ import {v4 as uuid} from "uuid";
 import { User } from './User';
 
 @Entity("messages")
-
 class Messages{
 
     @PrimaryColumn()
@@ -17,6 +16,7 @@ class Messages{
     @ManyToOne(()=> User)
     user : User;
 
+    @Column()
     user_id: string;
 
     @Column()

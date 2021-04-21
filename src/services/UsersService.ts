@@ -1,5 +1,5 @@
 import {getCustomRepository} from "typeorm";
-import {UsersReponsitory} from "../repositories/UsersRepository";
+import {UsersRepository} from "../repositories/UsersRepository";
 
 interface UserConfig {
     username: string,
@@ -9,7 +9,7 @@ interface UserConfig {
 
 class UsersService{
     async create({username, email, password}: UserConfig){
-        const usersRepository = getCustomRepository(UsersReponsitory);
+        const usersRepository = getCustomRepository(UsersRepository);
 
         const user = await usersRepository.findOne({
             email
@@ -17,7 +17,6 @@ class UsersService{
 
         if(user){
             return user;
-            // throw new Error("Email already exists!")
         }
 
         const newUser = usersRepository.create({
