@@ -1,5 +1,12 @@
 ## Comandos Projeto
 
+## Instalar dependências e Yarn
+
+```
+npm install
+npm install --global yarn
+```
+
 Iniciar o projeto
 
 ```
