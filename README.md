@@ -31,3 +31,13 @@ Rodar migration no banco de dados
 yarn typeorm migrations:run
 npm run typeorm migrations:run
 ```
+
+## Documentação
+
+A documentação das APIs está disponibilizada em http://localhost:3333/api-docs
+
+### Gerar documentação
+
+```
+npm run swagger-autogen
+```

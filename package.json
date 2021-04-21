@@ -7,12 +7,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
+    "swagger-autogen": "node swagger.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
+    "swagger-autogen": "^2.7.9",
     "typeorm": "^0.2.32",
     "uuid": "^8.3.2"
   },
