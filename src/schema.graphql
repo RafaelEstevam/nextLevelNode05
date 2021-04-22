@@ -1,0 +1,22 @@
+type User {
+  id: ID!
+  username: String!
+  email: String!
+}
+
+type Message {
+  user_id: ID!
+  text: String
+  admin_id: String
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+  messages: [Message!]!
+  message(user_id: ID!): Message
+}
+
+type Mutation {
+  createUser(username: String!, email: String!, password: String!): User
+}
