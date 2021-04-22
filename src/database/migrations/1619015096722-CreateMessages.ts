@@ -6,7 +6,7 @@ export class CreateMessages1619015096722 implements MigrationInterface {
         await queryRunner.createTable(
             new Table({
                 name: "messages",
-                columns: [
+                columns:[
                     {
                         name: "id",
                         type: "uuid",

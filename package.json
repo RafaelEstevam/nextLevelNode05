@@ -12,9 +12,12 @@
     "swagger-autogen": "node swagger.js"
   },
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "graphql-yoga": "^1.18.3",
     "reflect-metadata": "^0.1.13",
+    "socket.io": "^4.0.1",
+    "socket.io-client": "^4.0.1",
     "sqlite3": "^5.0.2",
     "swagger-autogen": "^2.7.9",
     "typeorm": "^0.2.32",
@@ -23,6 +26,7 @@
   "devDependencies": {
     "@types/express": "^4.17.11",
     "@types/node": "^14.14.41",
+    "@types/socket.io": "^2.1.13",
     "@types/uuid": "^8.3.0",
     "express-swagger-generator": "^1.1.17",
     "nodemon": "^2.0.7",

@@ -1,5 +1,6 @@
-import {getCustomRepository} from "typeorm";
+import {getCustomRepository, Repository} from "typeorm";
 import {UsersRepository} from "../repositories/UsersRepository";
+import {User} from '../entities/User';
 
 interface UserConfig {
     username: string,
@@ -8,10 +9,16 @@ interface UserConfig {
 }
 
 class UsersService{
-    async create({username, email, password}: UserConfig){
-        const usersRepository = getCustomRepository(UsersRepository);
 
-        const user = await usersRepository.findOne({
+    private usersRepository: Repository<User>;
+
+    constructor(){
+        this.usersRepository = getCustomRepository(UsersRepository);
+    }
+
+    async create({username, email, password}: UserConfig){
+
+        const user = await this.usersRepository.findOne({
             email
         })
 
@@ -19,15 +26,26 @@ class UsersService{
             return user;
         }
 
-        const newUser = usersRepository.create({
+        const newUser = this.usersRepository.create({
             username,
             email,
             password
         });
 
-        await usersRepository.save(newUser);
+        await this.usersRepository.save(newUser);
 
         return newUser;
+    }
+
+    async findByEmail (email:string){
+
+        const user = await this.usersRepository.findOne({
+            email
+        })
+
+        if(user){
+            return user;
+        }
     }
 }
 
