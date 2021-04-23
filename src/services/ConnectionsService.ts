@@ -18,26 +18,29 @@ class ConnectionsService{
     }
 
     async create({id, admin_id, user_id, socket_id}:ConnectionsConfig){
-
         const connection = this.connectionsRepository.create({
             id,
             admin_id,
             user_id,
             socket_id
         })
-
         await this.connectionsRepository.save(connection);
-
         return connection;
-
     }
 
     async findByUserId(user_id: string){
         const connection = this.connectionsRepository.findOne({
             user_id
         })
-
         return connection;
+    }
+
+    async getAllConnectionsWithoutAdmin(){
+        const allConnections = this.connectionsRepository.find({
+            where: { admin_id: null},
+            relations: ['user'],
+        })
+        return allConnections;
     }
 }
 

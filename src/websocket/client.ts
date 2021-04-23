@@ -70,5 +70,10 @@ io.on('connect', (socket) => {
             })
             
         }
+
+        const allClientMessages = await messagesService.index(userExists.id);
+
+        socket.emit('client_all_messages', allClientMessages);
+
     })
 })
