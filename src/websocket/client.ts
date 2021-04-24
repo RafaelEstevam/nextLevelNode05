@@ -68,12 +68,30 @@ io.on('connect', (socket) => {
                 user_id,
                 text
             })
-            
+
+            const allClientMessages = await messagesService.index(userExists.id);
+            socket.emit('client_all_messages', allClientMessages);
         }
 
-        const allClientMessages = await messagesService.index(userExists.id);
 
-        socket.emit('client_all_messages', allClientMessages);
+        const allUsers = await connectionsService.getAllConnectionsWithoutAdmin();
+        io.emit("get_all_connectons_without_admin", allUsers);
+
+    })
+
+    socket.on('client_send_message', async (params) => {
+        // console.log(params)
+        const socket_id = socket.id;
+        const {text, socket_admin_id} = params;
+
+        const {user_id} = await connectionsService.findBySocketId(socket_id);
+
+        const message = await messagesService.create({text, user_id})
+
+        socket.to(socket_admin_id).emit('send_to_admin', {
+            message,
+            socket_id
+        });
 
     })
 })

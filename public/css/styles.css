@@ -10,7 +10,7 @@ body {
 }
 
 .btn_support {
-  float: right;
+  float: left;
   width: 153px;
   height: 56px;
 
@@ -27,7 +27,7 @@ body {
 
   position: absolute;
   bottom: 30px;
-  right: 10px;
+  left: 10px;
   cursor: pointer;
 }
 
